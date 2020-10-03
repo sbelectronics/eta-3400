@@ -49,3 +49,7 @@ picocom /dev/ttyS0 --baud 2400 -p 1 -d 7 -y e
 The gerbers are present in the gerbers directory.
 
 * gerbers/v-0.2-initial .. This was my initial order, sent to jlcpcb, to make the boards used in the video.
+
+## Resources and Acknowlegements
+
+* The [ET-3400 group](https://groups.io/g/ET-3400) is a great resource, and several people there were helpful and supportive of this project.
