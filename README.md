@@ -1,6 +1,8 @@
 # Scott's ETA-3400 Memory/IO Accessory Remake
 (c) Scott Baker, http://www.smbaker.com/
 
+youtube video: https://www.youtube.com/watch?v=gP17z7haC4o&ab_channel=smbakeryt
+
 ## Purpose
 
 The ETA-3400 was a memory/IO accessory for Heathkit's ET-3400 and ET-3400-A trainers. It added a serial port, a cassette port, up to 4K of RAM, and 4K of ROM. The ROM included a terminal monitor that you could use to operate the trainer over serial, as well as a "Tiny Basic" ROM that allowed you to program the trainer in the BASIC programming language.
@@ -41,3 +43,9 @@ sudo minicom -s
 sudo apt-get -y install picocom
 picocom /dev/ttyS0 --baud 2400 -p 1 -d 7 -y e
 ```
+
+## Gerbers
+
+The gerbers are present in the gerbers directory.
+
+* gerbers/v-0.2-initial .. This was my initial order, sent to jlcpcb, to make the boards used in the video.
