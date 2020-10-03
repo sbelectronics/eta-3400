@@ -1,0 +1,49 @@
+name eta3400;
+device g16v8;
+partno x;
+date 1/1/1980;
+designer smbaker;
+company sbsoftware;
+revision 1;
+assembly x;
+location x;
+
+PIN 1 = CLK;
+PIN 2 = A10;
+PIN 3 = A11;
+PIN 4 = A12;
+PIN 5 = A13;
+PIN 6 = A14;
+PIN 7 = A15;
+PIN 8 = !VMA02;
+PIN 9 = !WR;
+PIN 10 = GND;
+PIN 11 = ASPARE;
+PIN 12 = RAMA13;
+PIN 13 = !WE;
+PIN 14 = !OE;
+PIN 15 = !RE;
+PIN 16 = RAMA12;
+PIN 17 = !PIACS;
+PIN 18 = !ROMCS;
+PIN 19 = !RAMCS;
+PIN 20 = VCC;
+
+FIELD MEMADR = [A15..10] ;
+
+ROM_SELECT = VMA02 & MEMADR :[1400..21FF] ;
+RAM_SELECT = VMA02 & MEMADR :[0000..0FFF] ;
+PIA_SELECT = VMA02 & MEMADR :[1000..13FF] ;
+
+ROMCS = ROM_SELECT;
+RAMCS = RAM_SELECT;
+PIACS = PIA_SELECT;
+
+WE = VMA02 & WR;
+OE = VMA02 & !WR;
+
+RE = VMA02 & (ROM_SELECT # RAM_SELECT # PIACS) & !WR ;
+
+RAMA12 = 'b'0;   /* for now, leave A12 set to Low */
+RAMA13 = RAM_SELECT;   /* on AS6C6264, RAMA13 is a positive CS */
+

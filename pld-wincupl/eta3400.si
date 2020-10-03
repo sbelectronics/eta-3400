@@ -1,0 +1,28 @@
+name eta3400;
+device g16v8;
+partno x;
+date 1/1/1980;
+designer smbaker;
+company sbsoftware;
+revision 1;
+assembly x;
+location x;
+
+ORDER: !VMA02, !WR, A15, A14, A13, A12, A11, A10, !RAMCS, !ROMCS, !PIACS, !RE, !WE, !OE, RAMA12, RAMA13;
+
+VECTORS:    0     X   0    0    0    0    0    0       L       H       H    X    X    X       L       H   /* 0x0000 - 0x03FF RAM */
+            0     X   0    0    0    0    0    1       L       H       H    X    X    X       L       H   /* 0x0400 - 0x07FF RAM */
+            0     X   0    0    0    0    1    0       L       H       H    X    X    X       L       H   /* 0x0800 - 0x0BFF RAM */
+            0     X   0    0    0    0    1    1       L       H       H    X    X    X       L       H   /* 0x0C00 - 0x0FFF RAM */
+            0     X   0    0    0    1    0    0       H       H       L    X    X    X       L       L   /* 0x1000 - 0x13FF PIA */
+            0     X   0    0    0    1    0    1       H       L       H    X    X    X       L       L   /* 0x1400 - 0x17FF ROM */
+            0     X   0    0    0    1    1    0       H       L       H    X    X    X       L       L   /* 0x1800 - 0x1BFF ROM */
+            0     X   0    0    0    1    1    1       H       L       H    X    X    X       L       L   /* 0x1C00 - 0x1FFF ROM */
+            0     X   0    0    1    0    0    0       H       L       H    X    X    X       L       L   /* 0x2000 - 0x23FF ROM */
+            0     X   0    0    1    0    0    1       H       H       H    H    X    X       L       L   /* 0x2400 - 0x27FF RE is forced high because there is no CS */
+/* RE, OE, and WE logic */
+            1     X   X    X    X    X    X    X       H       H       H    H    H    H       L       L   /* No VMA02 means nothing is selected */
+            0     0   0    0    0    0    0    0       L       H       H    H    L    H       L       H   /* 0x0000 - 0x03FF RAM, write */
+            0     1   0    0    0    0    0    0       L       H       H    L    H    L       L       H   /* 0x0000 - 0x03FF RAM, read */
+            0     0   0    0    0    1    0    1       H       L       H    H    L    H       L       L   /* 0x1400 - 0x17FF ROM, write */
+            0     1   0    0    0    1    0    1       H       L       H    L    H    L       L       L   /* 0x1400 - 0x17FF ROM, read */
