@@ -42,7 +42,22 @@ sudo minicom -s
 # as an alternative to minicom, picocom can be used
 sudo apt-get -y install picocom
 picocom /dev/ttyS0 --baud 2400 -p 1 -d 7 -y e
+
+Note: You'll want to set an end-of-line delay in minicom or picocom if you want to be able to do text uploads to basic. I recommend 325 milliseconds. Otherwise, your terminal
+might send the next character while basic is saving the freshly-entered line, and the first character of the next line will be lost.
 ```
+
+## Static RAM Notes
+
+My tests of several 62256 RAM variants that I obtained. Note that I have only performed a short test on each one to verify whether
+BASIC loaded properly and was able to run a short program. Your mileage may vary.
+
+* AS6C62256-55PCN (Mouser) 55ns part DOES NOT WORK correctly. 70ns part (-70PCN) is fine but hard to find.
+* HM62256LP-12 (Jameco 42850). According to catalog is a 150ns part, but as received with -12 number is probably 120ns. Tested and works.
+* KM62256BLP-10 (Jameco 42833). 100ns. Tested and works.
+* HM62256BLP-7 (Jameco 82472). 70ns low power. DOES NOT WORK.
+* MS62256L-70PC (ebay). 70ns. Tested and works.
+* CY62256NLL-70PXC. 70ns. Tested and works.
 
 ## Gerbers
 
